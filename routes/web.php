@@ -18,3 +18,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::view('/', 'index')->name('home');
+Route::view('/about', 'about')->name('about');
+Route::view('/catalog', 'catalog')->name('catalog');
+Route::view('/services', 'services')->name('services');
+Route::view('/reviews', 'reviews')->name('reviews');
+Route::view('/cart', 'cart')->name('cart');

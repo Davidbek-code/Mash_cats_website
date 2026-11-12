@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+@font-face {
+    font-family: "Rubbik Bubbles";
+    src: url(../fonts/RubikBubbles-Regular.ttf)
+}
+@font-face {
+    font-family: "Bounded-Variable";
+    src: url(../fonts/Bounded-Variable.ttf)
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Bounded-Variable", "sans-serif";
+}
+main {
+    margin-bottom: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registartion_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.registration_title {
+    font-family: "Rubbik Bubbles", sans-serif;
+    font-size: 70px;
+    text-align: center;
+    color: #FF9595;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.input_title {
+    font-size: 32px;
+    color: #3C3C3C;
+    font-weight: 400;
+}
+
+.input{
+    border: 4px solid #FF9595;
+    padding: 0.375rem 0.75rem;
+    border-radius: 20px;
+    font-size: 26px;
+    color: #3C3C3C;
+}
+
+.input:focus {
+    box-shadow: 1px 1px 5px 5px rgba(255, 0, 0, 0.3);
+    outline: 0;
+}
+
+.input {
+    margin-top: 10px;
+    height: 75px;
+    width: 675px;
+}
+.input:hover {
+    transform: scale(1.02);
+    transition: 0.5s;
+}
+
+.btn_register {
+    font-family: "Bounded-Variable", "sans-serif";
+    text-align: center;
+    font-size: 36px;
+    color: #FFFFFF;
+
+    background-color: #FF9595;
+    border-radius: 20px;
+    border: none;
+
+    height: 90px;
+    width: 541px;
+    margin-top: 70px;
+
+    transition: 0.4s;
+}
+
+.btn_register:hover {
+    background-color: #FFFFFF;
+    color: #FF9595;
+    box-shadow: 1px 1px 5px 5px rgba(255, 0, 0, 0.3);
+}
+
+
+@media (max-width: 768px) {
+    .registration_title {
+        font-size: 50px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .registartion_form {
+        width: 75%;
+        max-width: 85%;
+    }
+    .input_container {
+        width: 100%;
+    }
+    .input {
+        width: 100%;
+        font-size: 20px;
+        padding: 0.3rem 0.6rem;
+        border-radius: 15px;
+    }
+
+    .btn_register {
+        width: 75%;
+        max-width: 85%;
+        font-size: 24px;
+        height: 60px;
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 400px) {
+    main {
+        margin-bottom: 150px;
+    }
+
+    .registration_title {
+        font-size: 32px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .input {
+        width: 100%;
+        font-size: 16px;
+        padding: 0.2rem 0.4rem;
+        height: 50px;
+    }
+
+    .btn_register {
+        height: 50px;
+        font-size: 18px;
+        margin-top: 40px;
+    }
+    .input_title {
+    font-size: 18px;
+    }
+}
