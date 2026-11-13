@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 @font-face {
     font-family: "Rubbik Bubbles";
-    src: url(./fonts/RubikBubbles-Regular.ttf)
+    src: url(../fonts/RubikBubbles-Regular.ttf)
 }
 @font-face {
     font-family: "Bounded-Variable";
-    src: url(./fonts/Bounded-Variable.ttf)
+    src: url(../fonts/Bounded-Variable.ttf)
 }
 *{
     margin: 0;
@@ -96,7 +96,7 @@ ul {
     .container {
         display: flex;
         flex-direction: column;
-        align-items: center;  
+        align-items: center;
     }
     .item_box_1, .item_box_2{
         display: flex;

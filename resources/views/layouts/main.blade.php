@@ -6,7 +6,6 @@
     <title>@yield('title', 'Зефирные котята')</title>
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/registration.css') }}">
 
     @stack('styles')
 </head>
@@ -37,7 +36,15 @@
                             <a href="{{ route('home') }}"><img class="icon_img" alt="favorites" src="{{ asset('img/icon_fav.svg') }}"></a>
                         </li>
                         <li>
-                            <a href="{{ route('home') }}"><img class="icon_img" alt="registartion" src="{{ asset('img/icon_user.svg') }}"></a>
+                            @auth
+                                <a href="{{ route('profile.edit') }}" title="Личный кабинет">
+                                    <img class="icon_img" alt="profile" src="{{ asset('img/icon_user.svg') }}">
+                                </a>
+                            @else
+                                <a href="{{ route('login') }}" title="Войти">
+                                    <img class="icon_img" alt="login" src="{{ asset('img/icon_user.svg') }}">
+                                </a>
+                            @endauth
                         </li>
                         <li>
                             <a href="{{ route('cart') }}"><img class="icon_img" alt="cart" src="{{ asset('img/icon_cart.svg') }}"></a>
