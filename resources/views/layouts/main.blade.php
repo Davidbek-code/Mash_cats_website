@@ -26,10 +26,20 @@
                 <li><a href="{{ route('home') }}">
                         <img src="{{ asset('img/cat_logo.svg') }}" alt="Логотип">
                     </a></li>
-                <li><a href="{{ route('about') }}">О нас</a></li>
+                @auth
+                    @if (Auth::user()->role === 'user')
+                        <li><a href="{{ route('about') }}">О нас</a></li>
+                    @endif
+                @endauth
+
                 <li><a href="{{ route('catalog') }}">Меню</a></li>
                 <li><a href="{{ route('services') }}">Услуги</a></li>
                 <li><a href="{{ route('reviews') }}">Отзывы</a></li>
+                @auth
+                    @if (Auth::user()->role === 'admin')
+                        <li><a href="{{ route('admin.users.index') }}">Админ-панель</a></li>
+                    @endif
+                @endauth
                 <li>
                     <ul class="header_icon_list">
                         <li>

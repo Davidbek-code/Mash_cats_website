@@ -70,6 +70,8 @@
         @endif
 
         <form method="POST" action="{{ route('register') }}">
+            @csrf
+
             <div class="input_container">
                 <p class="input_title">Фамилия</p>
                 <input type="text" name="surname" value="{{ old('surname') }}" required class="input">
