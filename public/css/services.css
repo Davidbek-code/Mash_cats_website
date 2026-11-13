@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+@font-face {
+    font-family: "Rubbik Bubbles";
+    src: url(./fonts/RubikBubbles-Regular.ttf)
+}
+@font-face {
+    font-family: "Bounded-Variable";
+    src: url(./fonts/Bounded-Variable.ttf)
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+main.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    
+    margin-bottom: 230px;
+}
+
+.services_carousel {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    justify-content: space-around;
+
+    margin-bottom: 130px;
+}
+
+.services_card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+
+    max-width: 1150px;
+    padding: 40px;
+    background-color: white;
+    color: #FF9595;
+    border-radius: 15px;
+    border: 5px solid #FF9595;
+    text-align: left;
+}
+.services_card_info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.services_card_textbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    color: #3c3c3c;
+    font-size: 32px;
+    font-weight: 450;
+    max-width: 680px;
+}
+
+.arrow {
+    height: 70px;
+    width: 27px;
+    border: none;
+    background-color: #FFFFFF;
+
+    cursor: cell;
+}
+
+.arrow.left {
+    margin-right: 20px;
+}
+
+.arrow.right {
+    margin-left: 20px;
+}
+.services_card img {
+    width: 416px;
+    height: 385px;
+    border-radius: 20px;
+    object-fit: cover
+}
+
+.services_title {
+    font-family: "Rubbik Bubbles", sans-serif;
+    font-size: 70px;
+    text-align: center;
+    color: #FF9595;
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.services_carousel h2 {
+    color: #FF9595;
+    font-size: 60px;
+}
+.btn_call {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    font-size: 36px;
+    font-weight: 450;
+    color: #FFFFFF;
+
+    background-color: #FF9595;
+    border-radius: 20px;
+    transition: 0.4s;
+    width: 600px;
+    height: 75px;
+}
+.btn_call:hover {
+    background-color: rgba(0, 0, 0, 0);
+    outline: 2px solid #FF9595;
+    color: #FF9595;
+    box-shadow: 1px 1px 5px 5px rgba(255, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .services_title {
+        margin-top: 40px;
+        font-size: 50px;
+    }
+
+    .services_carousel {
+        padding: 0;
+        max-width: 100%;
+    }
+    .services_card {
+        gap: 25px;
+        border: 2px solid #FF9595;
+
+        max-width: 70%;
+        padding: 20px;
+
+    }
+    .services_card h2 {
+        font-size: 36px;
+    }
+    .services_card img {
+        width: 35%;
+        height: 30%;
+    }
+
+    .services_card_textbox {
+        gap: 10px;
+        font-size: 18px;
+    }
+    .btn_call {
+        width: 60%;
+        height: 50px;
+        font-size: 24px;
+    }
+    .services_card_info{
+        gap: 10px;
+    }
+    .arrow {
+        object-fit: cover;
+
+    }
+    .arrow img {
+        height: 50px;
+        width: 22px;
+    }
+    .arrow.left {
+        margin-right: 5px;
+    }
+
+    .arrow.right {
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    .services_title {
+        margin-top: 40px;
+        font-size: 40px;
+    }
+    .services_carousel {
+        margin-bottom: 80px;
+    }
+    .services_card {
+        gap: 20px;
+        padding: 15px;
+    }
+    .services_card h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+    .services_card_info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .services_card img {
+        width: 65vw;
+        height: 55vw;
+    }
+    .btn_call {
+        width: 94%;
+        height: 35px;
+        font-size: 16px;
+        border-radius: 12px;
+    }
+    .arrow img {
+        height: 40px;
+        width: 15px;
+    }
+}

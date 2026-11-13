@@ -15,7 +15,7 @@
                 <h1 class="welcome_marsh_title">ЗЕФИРНЫЕ</h1>
                 <h1 class="welcome_cat_title">КОТЯТА</h1>
 
-                <a href="{{ route('catalog') }}" class="btn_buy">Сделать заказ</a>
+                <a href="{{ route('catalog.index') }}" class="btn_buy">Сделать заказ</a>
             </div>
         </div>
     </section>

@@ -32,7 +32,7 @@
                     @endif
                 @endauth
 
-                <li><a href="{{ route('catalog') }}">Меню</a></li>
+                <li><a href="{{ route('catalog.index') }}">Меню</a></li>
                 <li><a href="{{ route('services') }}">Услуги</a></li>
                 <li><a href="{{ route('reviews') }}">Отзывы</a></li>
                 @auth
@@ -81,7 +81,7 @@
                 <li><a href="{{ route('reviews') }}">Отзывы</a></li>
             </ul>
             <ul class="footer_nav_string2">
-                <li><a href="{{ route('catalog') }}">Меню</a></li>
+                <li><a href="{{ route('catalog.index') }}">Меню</a></li>
                 <li><a href="{{ route('home') }}">Профиль</a></li>
                 <li><a href="{{ route('services') }}">Услуги</a></li>
             </ul>
