@@ -22,10 +22,19 @@ class CatalogController extends Controller
             $query->where('product_name', 'like', '%' . $request->search . '%');
         }
 
+        if ($request->has('in_stock')) {
+            $query->where('in_stock', 1);
+        }
+
+
         if ($request->sort === 'price_asc') {
             $query->orderBy('price', 'asc');
         } elseif ($request->sort === 'price_desc') {
             $query->orderBy('price', 'desc');
+        } elseif ($request->sort === 'weight_asc') {
+            $query->orderBy('weight', 'asc');
+        } elseif ($request->sort === 'weight_desc') {
+            $query->orderBy('weight', 'desc');
         }
 
         $products = $query->get();

@@ -7,8 +7,9 @@
 @endpush
 
 @section('content')
+    <h1 class="admin_title">УПРАВЛЕНИЕ РОЛЯМИ</h1>
     <div class="admin-container">
-        <h1>Управление пользователями и ролями</h1>
+{{--        <h1 class="admin_title">Управление пользователями и ролями</h1>--}}
 
         @if (session('success'))
             <div class="alert-success">{{ session('success') }}</div>

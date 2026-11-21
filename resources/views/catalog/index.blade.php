@@ -10,9 +10,13 @@
     <div style="max-width: 1000px; margin: 20px auto;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h1>Каталог товаров</h1>
-            <a href="{{ route('catalog.create') }}" style="padding: 8px 15px; border: 1px solid #333; text-decoration: none; color: #000;">
-                Добавить товар
-            </a>
+            @auth
+                @if(in_array(auth()->user()->role, ['admin', 'manager']))
+                    <a href="{{ route('catalog.create') }}" style="padding: 8px 15px; border: 1px solid #333; text-decoration: none; color: #000;">
+                        Добавить товар
+                    </a>
+                @endif
+            @endauth
         </div>
 
         @if(session('success'))
@@ -21,11 +25,13 @@
             </div>
         @endif
 
-        <!-- Форма фильтрации (остаётся без изменений) -->
-        <form method="GET" action="{{ route('catalog.index') }}" style="margin-bottom: 20px;">
-            <input type="text" name="search" value="{{ request('search') }}" placeholder="Поиск по названию...">
+        <form method="GET" action="{{ route('catalog.index') }}" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
 
-            <select name="category">
+            <!-- Поиск -->
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="Поиск по названию..." style="padding: 5px;">
+
+            <!-- Фильтр по категории -->
+            <select name="category" style="padding: 5px;">
                 <option value="">Все категории</option>
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
@@ -34,13 +40,24 @@
                 @endforeach
             </select>
 
-            <select name="sort">
-                <option value="">По умолчанию</option>
+            <!-- Сортировка -->
+            <select name="sort" style="padding: 5px;">
+                <option value="">Без сортировки</option>
                 <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Сначала дешевые</option>
                 <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Сначала дорогие</option>
+                <option value="weight_asc" {{ request('sort') == 'weight_asc' ? 'selected' : '' }}>Сначала легкие (по весу)</option>
+                <option value="weight_desc" {{ request('sort') == 'weight_desc' ? 'selected' : '' }}>Сначала тяжелые (по весу)</option>
             </select>
 
-            <button type="submit">Применить</button>
+            <!-- Фильтр по наличию -->
+            <label style="font-size: 14px; cursor: pointer;">
+                <input type="checkbox" name="in_stock" value="1" {{ request('has') || request('in_stock') ? 'checked' : '' }}>
+                Только в наличии
+            </label>
+
+            <!-- Кнопки управления -->
+            <button type="submit" style="padding: 5px 15px; cursor: pointer;">Найти</button>
+            <a href="{{ route('catalog.index') }}" style="padding: 5px 10px; border: 1px solid #999; text-decoration: none; color: #333; font-size: 14px;">Сбросить</a>
         </form>
 
         <!-- Сетка товаров с простыми рамками -->
@@ -69,6 +86,17 @@
                     <p style="margin: 0; font-size: 13px; color: {{ $product->in_stock ? 'green' : 'red' }};">
                         {{ $product->in_stock ? 'В наличии' : 'Нет в наличии' }}
                     </p>
+
+                    @auth
+                        @if($product->in_stock)
+                            <form action="{{ route('cart.add', $product) }}" method="POST" style="margin-top: 10px;">
+                                @csrf
+                                <button type="submit" style="padding: 6px 12px; border: 1px solid #333; background: #f9f9f9; cursor: pointer; width: 100%;">
+                                    В корзину
+                                </button>
+                            </form>
+                        @endif
+                    @endauth
 
                         @auth
                             @if(in_array(auth()->user()->role, ['admin', 'manager']))

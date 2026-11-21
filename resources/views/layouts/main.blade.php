@@ -29,15 +29,19 @@
                 @auth
                     @if (Auth::user()->role === 'user')
                         <li><a href="{{ route('about') }}">О нас</a></li>
+                        <li><a href="{{ route('services') }}">Услуги</a></li>
                     @endif
                 @endauth
 
                 <li><a href="{{ route('catalog.index') }}">Меню</a></li>
-                <li><a href="{{ route('services') }}">Услуги</a></li>
                 <li><a href="{{ route('reviews') }}">Отзывы</a></li>
                 @auth
                     @if (Auth::user()->role === 'admin')
                         <li><a href="{{ route('admin.users.index') }}">Админ-панель</a></li>
+                    @endif
+
+                    @if (Auth::user()->role === 'admin' or Auth::user()->role === 'manager')
+                        <li><a href="{{ route('orders.index') }}">Заказы</a></li>
                     @endif
                 @endauth
                 <li>
@@ -57,7 +61,9 @@
                             @endauth
                         </li>
                         <li>
-                            <a href="{{ route('cart') }}"><img class="icon_img" alt="cart" src="{{ asset('img/icon_cart.svg') }}"></a>
+                            @auth
+                                <a href="{{ route('cart.index') }}"><img class="icon_img" alt="cart" src="{{ asset('img/icon_cart.svg') }}"></a>
+                            @endauth
                         </li>
                     </ul>
                 </li>

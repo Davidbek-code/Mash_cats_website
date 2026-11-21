@@ -3,7 +3,6 @@
 @section('title', 'Личный кабинет')
 
 @push('styles')
-    <!-- Подключаем стили вашей формы, чтобы поля сразу выглядели красиво -->
     <link rel="stylesheet" href="{{ asset('css/registration.css') }}">
 @endpush
 
@@ -28,6 +27,8 @@
                 @endforeach
             </div>
         @endif
+
+        <a style="color: #3C3C3C;" href="{{ route('orders.my') }}">Мои заказы</a>
 
         <!-- 1. Форма редактирования личных данных -->
         <form method="POST" action="{{ route('profile.update') }}" style="margin-bottom: 40px;">

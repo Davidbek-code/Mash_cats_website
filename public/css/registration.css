@@ -38,6 +38,14 @@ main {
     margin-bottom: 50px;
 }
 
+.admin_title {
+    font-family: "Rubbik Bubbles", sans-serif;
+    font-size: 50px;
+    color: #FF9595;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 .to_login_link {
     font-size: 20px;
     margin-top: 35px;
