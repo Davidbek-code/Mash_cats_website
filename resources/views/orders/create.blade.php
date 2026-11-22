@@ -21,10 +21,17 @@
         <ul style="margin: 0; padding-left: 20px;">
             @foreach($cartItems as $item)
                 <li style="margin-bottom: 5px;">
-                    {{ $item->product->product_name }} —
-                    <strong>{{ $item->quanity }} шт.</strong> ×
-                    {{ $item->product->price }} руб. =
-                    <strong>{{ $item->product->price * $item->quanity }} руб.</strong>
+                    @if($item->product)
+                        {{ $item->product->product_name }} —
+                        <strong>{{ $item->quanity }} шт.</strong> ×
+                        {{ $item->product->price }} руб. =
+                        <strong>{{ $item->product->price * $item->quanity }} руб.</strong>
+                    @elseif($item->customCake)
+                        Торт на заказ ({{ $item->customCake->biscuit_type }}, {{ $item->customCake->cream_type }}, {{ $item->customCake->filling_type }}) —
+                        <strong>{{ $item->quanity }} шт.</strong> ×
+                        {{ $item->customCake->total_price }} руб. =
+                        <strong>{{ $item->customCake->total_price * $item->quanity }} руб.</strong>
+                    @endif
                 </li>
             @endforeach
         </ul>

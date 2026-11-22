@@ -8,20 +8,19 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    // Просмотр корзины
     public function index()
     {
-        $cartItems = Cart::with('product')
+        $cartItems = Cart::with(['product', 'customCake'])
             ->where('user_id', auth()->id())
             ->get();
 
-        // Считаем общую сумму заказа
         $totalPrice = 0;
         foreach ($cartItems as $item) {
             if ($item->product) {
                 $totalPrice += $item->product->price * $item->quanity;
+            } elseif ($item->customCake) {
+                $totalPrice += $item->customCake->total_price * $item->quanity;
             }
-            // Позже сюда добавится: elseif ($item->customCake) { ... }
         }
 
         return view('cart.index', compact('cartItems', 'totalPrice'));

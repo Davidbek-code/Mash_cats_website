@@ -29,15 +29,23 @@
             @foreach($cartItems as $item)
                 <div style="border: 1px solid #ccc; padding: 15px; display: flex; justify-content: space-between; align-items: center;">
 
-                    <!-- Информация о товаре -->
+
                     <div>
                         @if($item->product)
                             <h3 style="margin: 0 0 5px 0;">{{ $item->product->product_name }}</h3>
                             <p style="margin: 0; font-size: 14px; color: #555;">
                                 Цена: {{ $item->product->price }} руб. | Вес: {{ $item->product->weight ?? '-' }} г
                             </p>
-                        @elseif($item->custom_cake_id)
-                            <h3 style="margin: 0 0 5px 0;">Торт на заказ #{{ $item->custom_cake_id }}</h3>
+                        @elseif($item->customCake)
+                            <h3 style="margin: 0 0 5px 0;">Торт на заказ</h3>
+                            <p style="margin: 0; font-size: 13px; color: #555;">
+                                Бисквит: {{ $item->customCake->biscuit_type }},
+                                Крем: {{ $item->customCake->cream_type }},
+                                Начинка: {{ $item->customCake->filling_type }}
+                                @if($item->customCake->decor_text)
+                                    | Надпись: «{{ $item->customCake->decor_text }}»
+                                @endif
+                            </p>
                         @endif
                     </div>
 
@@ -51,8 +59,16 @@
                             <button type="submit" name="action" value="increase" style="padding: 2px 8px; cursor: pointer;">+</button>
                         </form>
 
+{{--                        <div style="font-weight: bold; min-width: 90px; text-align: right;">--}}
+{{--                            {{ $item->product ? $item->product->price * $item->quanity : 0 }} руб.--}}
+{{--                        </div>--}}
+
                         <div style="font-weight: bold; min-width: 90px; text-align: right;">
-                            {{ $item->product ? $item->product->price * $item->quanity : 0 }} руб.
+                            @if($item->product)
+                                {{ $item->product->price * $item->quanity }} руб.
+                            @elseif($item->customCake)
+                                {{ $item->customCake->total_price * $item->quanity }} руб.
+                            @endif
                         </div>
 
                         <form action="{{ route('cart.destroy', $item) }}" method="POST" style="margin: 0;">

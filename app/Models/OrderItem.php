@@ -20,4 +20,9 @@ class OrderItem extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function customCake()
+    {
+        return $this->belongsTo(CustomCake::class);
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CustomCakeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/checkout', [OrderController::class, 'store'])->name('orders.store');
 
     Route::get('/my-orders', [OrderController::class, 'myOrders'])->name('orders.my');
+
+    Route::get('/custom-cake', [CustomCakeController::class, 'create'])->name('custom_cakes.create');
+    Route::post('/custom-cake', [CustomCakeController::class, 'store'])->name('custom_cakes.store');
 });
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
@@ -55,6 +59,6 @@ require __DIR__.'/auth.php';
 Route::view('/', 'index')->name('home');
 Route::view('/about', 'about')->name('about');
 //Route::view('/catalog', 'catalog')->name('catalog');
-Route::view('/services', 'services')->name('services');
+
 Route::view('/reviews', 'reviews')->name('reviews');
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');

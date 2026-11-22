@@ -39,8 +39,13 @@
                         <ul style="margin: 0; padding-left: 20px; font-size: 14px;">
                             @foreach($order->items as $item)
                                 <li>
-                                    {{ $item->product ? $item->product->product_name : 'Товар удалён' }} —
-                                    {{ $item->quanity }} шт. × {{ $item->price }} руб.
+                                    @if($item->product)
+                                        {{ $item->product->product_name }} — {{ $item->quanity }} шт. × {{ $item->price }} руб.
+                                    @elseif($item->customCake)
+                                        Торт на заказ ({{ $item->customCake->biscuit_type }}, {{ $item->customCake->cream_type }}) — {{ $item->quanity }} шт. × {{ $item->price }} руб.
+                                    @else
+                                        Товар удалён — {{ $item->quanity }} шт. × {{ $item->price }} руб.
+                                    @endif
                                 </li>
                             @endforeach
                         </ul>

@@ -12,7 +12,7 @@ class OrderController extends Controller
     // Страница оформления заказа
     public function create()
     {
-        $cartItems = Cart::with('product')
+        $cartItems = Cart::with(['product', 'customCake'])
             ->where('user_id', auth()->id())
             ->get();
 
@@ -39,7 +39,7 @@ class OrderController extends Controller
             'delivery_time' => 'required|date|after:now',
         ]);
 
-        $cartItems = Cart::with('product')
+        $cartItems = Cart::with(['product', 'customCake'])
             ->where('user_id', auth()->id())
             ->get();
 
@@ -65,12 +65,14 @@ class OrderController extends Controller
 
         // 2. Переносим каждую позицию из корзины в состав заказа
         foreach ($cartItems as $item) {
+            $itemPrice = $item->product ? $item->product->price : ($item->customCake ? $item->customCake->total_price : 0);
+
             OrderItem::create([
                 'order_id' => $order->id,
                 'product_id' => $item->product_id,
                 'custom_cake_id' => $item->custom_cake_id,
                 'quanity' => $item->quanity,
-                'price' => $item->product ? $item->product->price : 0,
+                'price' => $itemPrice,
             ]);
         }
 
@@ -82,7 +84,7 @@ class OrderController extends Controller
     // 1. Список заказов текущего пользователя (для профиля)
     public function myOrders()
     {
-        $orders = Order::with('items.product')
+        $orders = Order::with(['items.product', 'items.customCake'])
             ->where('user_id', auth()->id())
             ->orderBy('id', 'desc')
             ->get();
@@ -92,7 +94,7 @@ class OrderController extends Controller
     // 2. Таблица всех заказов для админа и менеджера
     public function index()
     {
-        $orders = Order::with(['user', 'items.product'])
+        $orders = Order::with(['user', 'items.product', 'items.customCake'])
             ->orderBy('id', 'desc')
             ->get();
 
