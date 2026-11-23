@@ -44,38 +44,21 @@
             </div>
         </div>
     </section>
-    <section class="new_products">
+    <section style="max-width: 1000px; margin: 40px auto;">
         <div class="container">
-            <h1 class="new_products_title">НОВИНКИ</h1>
-            <div class="new_products_items">
-                <div class="new_products_item">
-                    <img alt="" src="{{ asset('img/new_products_1.png') }}">
-                    <h4 class="new_products_item_title">Дикий огурец</h4>
-                    <p>Это уникальное растение, известное своим необычным плодом. Особые моменты ухода включают в себя управление его сильным ростом</p>
-                    <div class="order_box">
-                        <h4>500 руб</h4>
-                        <a href="/" class="new_products_btn_buy">ЗАКАЗАТЬ</a>
-                    </div>
-                </div>
-                <div class="new_products_item">
-                    <img alt="" src="{{ asset('img/new_products_1.png') }}">
-                    <h4 class="new_products_item_title">Дикий огурец</h4>
-                    <p>Это уникальное растение, известное своим необычным плодом. Особые моменты ухода включают в себя управление его сильным ростом</p>
-                    <div class="order_box">
-                        <h4>500 руб</h4>
-                        <a href="/" class="new_products_btn_buy">ЗАКАЗАТЬ</a>
-                    </div>
-                </div>
-                <div class="new_products_item">
-                    <img alt="" src="{{ asset('img/new_products_1.png') }}">
-                    <h4 class="new_products_item_title">Дикий огурец</h4>
-                    <p>Это уникальное растение, известное своим необычным плодом. Особые моменты ухода включают в себя управление его сильным ростом</p>
-                    <div class="order_box">
-                        <h4>500 руб</h4>
-                        <a href="/" class="new_products_btn_buy">ЗАКАЗАТЬ</a>
-                    </div>
-                </div>
+            <h1 class="welcome_subtitle">НОВИНКИ</h1>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
             </div>
+
+            @if($newProducts->isEmpty())
+                <p>Новинок пока нет.</p>
+            @else
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                    @foreach($newProducts as $product)
+                        @include('partials.product_card', ['product' => $product])
+                    @endforeach
+                </div>
+           @endif
         </div>
     </section>
 @endsection

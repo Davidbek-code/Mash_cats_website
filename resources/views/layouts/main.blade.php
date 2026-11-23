@@ -60,7 +60,7 @@
                                  <a href="{{ route('cart.index') }}"><img class="icon_img" alt="cart" src="{{ asset('img/icon_cart.svg') }}"></a>
                              </li>
                              <li>
-                                 <a href="{{ route('home') }}"><img class="icon_img" alt="favorites" src="{{ asset('img/icon_fav.svg') }}"></a>
+                                 <a href="{{ route('favorites.index') }}"><img class="icon_img" alt="favorites" src="{{ asset('img/icon_fav.svg') }}"></a>
                              </li>
                         @endauth
                     </ul>
@@ -81,7 +81,7 @@
             <h2 class="footer_cats_title">КОТЯТА</h2>
             <ul class="footer_nav_string1">
                 <li><a href="{{ route('about') }}">О нас</a></li>
-                <li><a href="{{ route('home') }}">Избранное</a></li>
+                <li><a href="{{ route('favorites.index') }}">Избранное</a></li>
                 <li><a href="{{ route('reviews.index') }}">Отзывы</a></li>
             </ul>
             <ul class="footer_nav_string2">

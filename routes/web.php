@@ -8,6 +8,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomCakeController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\FavoriteController;
+use App\Models\Product;
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,6 +38,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/custom-cake', [CustomCakeController::class, 'store'])->name('custom_cakes.store');
 
     Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+    Route::post('/favorites/toggle/{product}', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
 });
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
@@ -66,3 +71,11 @@ Route::view('/about', 'about')->name('about');
 
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+Route::get('/', function () {
+    $newProducts = Product::with('category')
+        ->orderBy('id', 'desc')
+        ->take(3)
+        ->get();
+
+    return view('index', compact('newProducts'));
+})->name('home');
