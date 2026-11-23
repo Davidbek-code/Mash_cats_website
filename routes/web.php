@@ -7,6 +7,7 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomCakeController;
+use App\Http\Controllers\ReviewController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,13 +34,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/custom-cake', [CustomCakeController::class, 'create'])->name('custom_cakes.create');
     Route::post('/custom-cake', [CustomCakeController::class, 'store'])->name('custom_cakes.store');
+
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 });
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::patch('/users/{user}/role', [UserController::class, 'updateRole'])->name('users.updateRole');
-//    Route::get('/catalog/create', [CatalogController::class, 'create'])->name('catalog.create');
-//    Route::post('/catalog', [CatalogController::class, 'store'])->name('catalog.store');
 });
 
 Route::middleware(['auth', 'role:admin,manager'])->group(function () {
@@ -52,6 +53,9 @@ Route::middleware(['auth', 'role:admin,manager'])->group(function () {
 
     Route::get('/admin/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::patch('/admin/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+
+    Route::get('/admin/reviews', [ReviewController::class, 'adminIndex'])->name('reviews.admin');
+    Route::patch('/admin/reviews/{review}/status', [ReviewController::class, 'updateStatus'])->name('reviews.updateStatus');
 });
 
 require __DIR__.'/auth.php';
@@ -60,5 +64,5 @@ Route::view('/', 'index')->name('home');
 Route::view('/about', 'about')->name('about');
 //Route::view('/catalog', 'catalog')->name('catalog');
 
-Route::view('/reviews', 'reviews')->name('reviews');
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
+Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
