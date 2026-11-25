@@ -7,12 +7,12 @@
 @endpush
 
 @section('content')
-    <div style="max-width: 1000px; margin: 20px auto;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <h1>Каталог товаров</h1>
+    <div class="catalog">
+        <div class="catalog_title_box">
+            <h1>КАТАЛОГ</h1>
             @auth
                 @if(in_array(auth()->user()->role, ['admin', 'manager']))
-                    <a href="{{ route('catalog.create') }}" style="padding: 8px 15px; border: 1px solid #333; text-decoration: none; color: #000;">
+                    <a href="{{ route('catalog.create') }}" class='add_product'>
                         Добавить товар
                     </a>
                 @endif
@@ -20,18 +20,16 @@
         </div>
 
         @if(session('success'))
-            <div style="padding: 10px; border: 1px solid green; color: green; margin-bottom: 15px;">
+            <div class="success_message">
                 {{ session('success') }}
             </div>
         @endif
 
-        <form method="GET" action="{{ route('catalog.index') }}" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+        <form method="GET" action="{{ route('catalog.index') }}" class="product_menu_bar">
 
-            <!-- Поиск -->
-            <input type="text" name="search" value="{{ request('search') }}" placeholder="Поиск по названию..." style="padding: 5px;">
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="Поиск" class="menu_input">
 
-            <!-- Фильтр по категории -->
-            <select name="category" style="padding: 5px;">
+            <select name="category" class="menu_input">
                 <option value="">Все категории</option>
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
@@ -40,8 +38,7 @@
                 @endforeach
             </select>
 
-            <!-- Сортировка -->
-            <select name="sort" style="padding: 5px;">
+            <select name="sort" class="menu_input">
                 <option value="">Без сортировки</option>
                 <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Сначала дешевые</option>
                 <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Сначала дорогие</option>
@@ -49,15 +46,13 @@
                 <option value="weight_desc" {{ request('sort') == 'weight_desc' ? 'selected' : '' }}>Сначала тяжелые (по весу)</option>
             </select>
 
-            <!-- Фильтр по наличию -->
-            <label style="font-size: 14px; cursor: pointer;">
+            <label class="in_stock_check">
                 <input type="checkbox" name="in_stock" value="1" {{ request('has') || request('in_stock') ? 'checked' : '' }}>
-                Только в наличии
+                В наличии
             </label>
 
-            <!-- Кнопки управления -->
-            <button type="submit" style="padding: 5px 15px; cursor: pointer;">Найти</button>
-            <a href="{{ route('catalog.index') }}" style="padding: 5px 10px; border: 1px solid #999; text-decoration: none; color: #333; font-size: 14px;">Сбросить</a>
+            <button type="submit" class="search_button" >Найти</button>
+            <a href="{{ route('catalog.index') }}" class="reset_button" >Сбросить</a>
         </form>
 
         <!-- Сетка товаров с простыми рамками -->
