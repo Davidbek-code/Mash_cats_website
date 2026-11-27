@@ -28,7 +28,7 @@ p, strong {
 .myorders_container {
     max-width: 800px;
     margin: 20px auto;
-    height: 80vh;
+    min-height: 80vh;
 }
 
 .myorders_bar {

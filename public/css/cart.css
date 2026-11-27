@@ -32,9 +32,8 @@ p {
 
 .cart_container {
     max-width: 800px;
-    height: 80vh;
     margin: 20px auto;
-
+    min-height: 80vh;
 }
 
 .cart_items_container {

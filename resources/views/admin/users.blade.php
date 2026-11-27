@@ -3,13 +3,12 @@
 @section('title', 'Админ-панель')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/registration.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tables.css') }}">
 @endpush
 
 @section('content')
     <h1 class="admin_title">УПРАВЛЕНИЕ РОЛЯМИ</h1>
     <div class="admin-container">
-{{--        <h1 class="admin_title">Управление пользователями и ролями</h1>--}}
 
         @if (session('success'))
             <div class="alert-success">{{ session('success') }}</div>
@@ -19,9 +18,8 @@
             <div class="alert-error">{{ session('error') }}</div>
         @endif
 
-        <div class="table-wrapper" style="overflow-x: auto;">
-{{--            <table border="1" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse; margin-top: 20px;">--}}
-            <table border="1" cellpadding="10" cellspacing="0" class="admin-table">
+        <div class="table-wrapper">
+            <table class="custom-table">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -42,17 +40,17 @@
                         <td>{{ $user->role }}</td>
                         <td>
                             @if ($user->id !== Auth::id())
-                                <form method="POST" action="{{ route('admin.users.updateRole', $user) }}" class="role-form">
+                                <form method="POST" action="{{ route('admin.users.updateRole', $user) }}" class="status-form">
                                     @csrf
                                     @method('PATCH')
 
-                                    <select name="role">
+                                    <select name="role" class="status-select">
                                         <option value="user" @selected($user->role === 'user')>Пользователь</option>
                                         <option value="manager" @selected($user->role === 'manager')>Менеджер</option>
                                         <option value="admin" @selected($user->role === 'admin')>Администратор</option>
                                     </select>
 
-                                    <button type="submit">ОК</button>
+                                    <button class="status-btn" type="submit">ОК</button>
                                 </form>
                             @else
                                 <span>Текущий аккаунт</span>

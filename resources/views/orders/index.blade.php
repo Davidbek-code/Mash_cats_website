@@ -3,25 +3,23 @@
 @section('title', 'Админ-панель')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/registration.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tables.css') }}">
 @endpush
 
 @section('content')
-    <div style="max-width: 1100px; margin: 20px auto;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <h1>Управление заказами</h1>
-            <a href="{{ route('catalog.index') }}" style="text-decoration: none; color: #333;">← В каталог</a>
+<h1 class="admin_title">УПРАВЛЕНИЕ ЗАКАЗАМИ</h1>
+<div class="page-container">
+
+    @if(session('success'))
+        <div class="alert-success">
+            {{ session('success') }}
         </div>
+    @endif
 
-        @if(session('success'))
-            <div style="padding: 10px; border: 1px solid green; color: green; margin-bottom: 15px;">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        <table border="1" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
+    <div class="table-wrapper">
+        <table class="custom-table">
             <thead>
-            <tr style="background: #f4f4f4;">
+            <tr>
                 <th>№</th>
                 <th>Клиент</th>
                 <th>Состав заказа</th>
@@ -36,10 +34,10 @@
                     <td>{{ $order->id }}</td>
                     <td>
                         <strong>{{ $order->user->name ?? 'Неизвестно' }}</strong><br>
-                        <span style="color: #555; font-size: 12px;">{{ $order->user->email ?? '' }}</span>
+                        <span class="sub-text">{{ $order->user->email ?? '' }}</span>
                     </td>
                     <td>
-                        <ul style="margin: 0; padding-left: 15px;">
+                        <ul class="order-items-list">
                             @foreach($order->items as $item)
                                 <li>
                                     @if($item->product)
@@ -55,15 +53,15 @@
                     </td>
                     <td>
                         {{ $order->delivery_address }}<br>
-                        <span style="color: #555; font-size: 12px;">К: {{ $order->delivery_time }}</span>
+                        <span class="sub-text">К: {{ $order->delivery_time }}</span>
                     </td>
-                    <td><strong>{{ $order->total_price }} руб.</strong></td>
+                    <td class="price-cell"><strong>{{ $order->total_price }} руб.</strong></td>
                     <td>
-                        <form action="{{ route('orders.updateStatus', $order) }}" method="POST" style="display: flex; gap: 5px; margin: 0;">
+                        <form action="{{ route('orders.updateStatus', $order) }}" method="POST" class="status-form">
                             @csrf
                             @method('PATCH')
 
-                            <select name="status" style="padding: 4px;">
+                            <select name="status" class="status-select">
                                 @foreach(['Новый', 'Готовится', 'В доставке', 'Выполнен', 'Отменён'] as $statusOption)
                                     <option value="{{ $statusOption }}" {{ $order->status === $statusOption ? 'selected' : '' }}>
                                         {{ $statusOption }}
@@ -71,17 +69,18 @@
                                 @endforeach
                             </select>
 
-                            <button type="submit" style="padding: 4px 8px; cursor: pointer;">ОК</button>
+                            <button type="submit" class="status-btn">ОК</button>
                         </form>
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="6" style="text-align: center;">Заказов пока нет.</td>
+                    <td colspan="6" class="empty-message">Заказов пока нет.</td>
                 </tr>
             @endforelse
             </tbody>
         </table>
     </div>
+</div>
 
 @endsection
