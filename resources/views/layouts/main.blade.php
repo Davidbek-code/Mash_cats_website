@@ -81,12 +81,16 @@
             <h2 class="footer_cats_title">КОТЯТА</h2>
             <ul class="footer_nav_string1">
                 <li><a href="{{ route('about') }}">О нас</a></li>
-                <li><a href="{{ route('favorites.index') }}">Избранное</a></li>
+                @auth
+                    <li><a href="{{ route('favorites.index') }}">Избранное</a></li>
+                @endauth
                 <li><a href="{{ route('reviews.index') }}">Отзывы</a></li>
             </ul>
             <ul class="footer_nav_string2">
                 <li><a href="{{ route('catalog.index') }}">Меню</a></li>
-                <li><a href="{{ route('home') }}">Профиль</a></li>
+                @auth
+                    <li><a href="{{ route('home') }}">Профиль</a></li>
+                @endauth
                 <li><a href="{{ route('custom_cakes.create') }}">Услуги</a></li>
             </ul>
         </nav>

@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+@font-face {
+    font-family: "Rubbik Bubbles";
+    src: url(../fonts/RubikBubbles-Regular.ttf)
+}
+@font-face {
+    font-family: "Bounded-Variable";
+    src: url(../fonts/Bounded-Variable.ttf)
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Bounded-Variable", sans-serif;
+}
+
+h1 {
+    font-family: "Rubbik Bubbles", sans-serif;
+    color: #FF9595;
+    font-size: 50px;
+}
+
+h3 {
+    margin: 0 0 5px 0;
+    color: #3C3C3C;
+}
+
+p {
+    color: #3C3C3C;
+}
+
+.cart_container {
+    max-width: 800px;
+    height: 80vh;
+    margin: 20px auto;
+
+}
+
+.cart_items_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back_to_catalog {
+    text-decoration: none;
+    color: #3C3C3C;
+}
+
+.success_message {
+    padding: 10px;
+    border: 1px solid green;
+    color: green;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.empty_message {
+    padding: 20px;
+    border: 1px solid #3C3C3C;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.cart_items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cart_item {
+    border: 2px solid #FF9595;
+    border-radius: 15px;
+    padding: 15px; display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart_item_description {
+    margin: 0;
+    font-size: 14px;
+}
+
+.cart_custom_description {
+    margin: 0;
+    font-size: 12px;
+}
+.cart_patch {
+    display: flex;
+    align-items: center;
+    gap: 15px;"
+}
+.cart_patch_form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+}
+
+.patch_btn {
+    padding: 2px 8px;
+    cursor: pointer;
+    background: none;
+    font-size: 18px;
+    color: #FF9595;
+    border-radius: 7px;
+    font-family: "Bounded-Variable", "sans-serif";
+    border: 1px solid #FF9595;
+}
+
+.cart_item_price {
+    font-weight: bold;
+    min-width: 90px;
+    text-align: right;
+    color: #3C3C3C;
+}
+
+.cart_item_delete_btn {
+    padding: 4px 8px;
+    border: 1px solid #FF9595;
+    border-radius: 7px;
+    background: none;
+    font-family: "Bounded-Variable", "sans-serif";
+    color: #FF9595;
+    cursor: pointer;
+}
+
+.create_order_container {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #3C3C3C;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create_order_btn {
+    border-radius: 15px;
+    padding: 10px 25px;
+    text-decoration: none;
+    background: #FF9595;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-family: "Bounded-Variable", "sans-serif";
+}

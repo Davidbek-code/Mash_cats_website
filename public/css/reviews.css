@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+@font-face {
+    font-family: "Rubbik Bubbles";
+    src: url(../fonts/RubikBubbles-Regular.ttf)
+}
+@font-face {
+    font-family: "Bounded-Variable";
+    src: url(../fonts/Bounded-Variable.ttf)
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Bounded-Variable", "sans-serif";
+}
+main {
+    margin-bottom: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+p{
+    color: #3C3C3C;
+}
+
+.reviews_title {
+    font-family: "Rubbik Bubbles", sans-serif;
+    font-size: 70px;
+    text-align: center;
+    color: #FF9595;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.review_container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.reviews_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.review_to_admin {
+    padding: 6px 12px;
+    border: 1px solid #3C3C3C;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #3C3C3C;
+}
+
+.success_message {
+    padding: 10px;
+    border: 1px solid green;
+    color: green;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.reviews_yet {
+    border: 1px solid #3C3C3C;
+    color: #3C3C3C;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.make_review_container {
+    border: 2px solid #FF9595;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 25px;
+
+    color: #3C3C3C;
+}
+
+.rating_container {
+    margin-bottom: 10px;
+}
+
+.rate {
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 7px;
+
+}
+
+.rate_textarea {
+    width: 98%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 7px;
+}
+
+.btn_rate_send {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 7px;
+    background: #FF9595;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "Bounded-Variable", "sans-serif";
+}
+
+.auth_message {
+    border: 1px solid #3C3C3C;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.reviews_item_container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.reviews_item {
+    border: 2px solid #FF9595;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.reviews_item_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.reviews_user_name {
+    color: #3C3C3C;
+}
+
+.rate_stars {
+    color: #FF9595;
+    font-size: 26px;
+    letter-spacing: 2px;
+}
+
+.reviews_item_text {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+}
+
+.reviews_item_date {
+    font-size: 12px;
+    color: #3C3C3C;
+}
+
+.reviews_empty {
+    text-align: center;
+}

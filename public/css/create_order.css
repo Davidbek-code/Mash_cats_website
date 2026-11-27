@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+@font-face {
+    font-family: "Rubbik Bubbles";
+    src: url(../fonts/RubikBubbles-Regular.ttf)
+}
+@font-face {
+    font-family: "Bounded-Variable";
+    src: url(../fonts/Bounded-Variable.ttf)
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Bounded-Variable", sans-serif;
+}
+
+h1 {
+    font-family: "Rubbik Bubbles", sans-serif;
+    font-size: 50px;
+    color: #FF9595;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+h3 {
+    margin: 0 0 5px 0;
+    color: #3C3C3C;
+}
+
+h4 {
+    margin: 0 0 10px 0;
+}
+
+p {
+    color: #3C3C3C;
+}
+
+.order_container {
+    max-width: 600px;
+    margin: 20px auto 200px auto;
+    padding: 20px;
+    border: 1px solid #3C3C3C;
+    border-radius: 15px;
+}
+
+.back_to_cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.compount_order {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #fafafa;
+}
+.compount_list {
+    margin: 0;
+    padding-left: 10px;
+}
+
+.total_price {
+    margin: 20px 0 0 0;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.errors {
+    color: red;
+    margin-bottom: 15px;
+}
+
+.address_input {
+    width: 98%;
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 7px;
+    border: 1px solid #3C3C3C;
+}
+
+.confirm_btn {
+    width: 100%;
+    padding: 13px;
+    cursor: pointer;
+    background: #FF9595;
+    border: none;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Bounded-Variable", "sans-serif";
+}

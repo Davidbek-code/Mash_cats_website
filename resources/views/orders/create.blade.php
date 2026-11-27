@@ -1,24 +1,23 @@
 @extends('layouts.main')
 
-@section('title', 'Корзина')
+@section('title', 'Оформление заказа')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/registration.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/create_order.css') }}">
 @endpush
 
 @section('content')
 
-<h1 class="admin_title">ОФОРМЛЕНИЕ ДОСТАВКИ</h1>
+<h1>ОФОРМЛЕНИЕ ДОСТАВКИ</h1>
 
-<div style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ccc;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+<div class="order_container">
+    <div class="back_to_cart">
         <a href="{{ route('cart.index') }}" style="text-decoration: none; color: #333;">← Назад в корзину</a>
     </div>
 
-    <!-- Краткий состав заказа -->
-    <div style="border: 1px solid #eee; padding: 10px; margin-bottom: 20px; background: #fafafa;">
-        <h4 style="margin: 0 0 10px 0;">Состав заказа:</h4>
-        <ul style="margin: 0; padding-left: 20px;">
+    <div class="compount_order">
+        <h4>Состав заказа:</h4>
+        <ul class="compount_list">
             @foreach($cartItems as $item)
                 <li style="margin-bottom: 5px;">
                     @if($item->product)
@@ -35,13 +34,13 @@
                 </li>
             @endforeach
         </ul>
-        <p style="margin: 10px 0 0 0; font-weight: bold; font-size: 16px;">
+        <p class="total_price">
             Итого к оплате при получении: {{ $totalPrice }} руб.
         </p>
     </div>
 
     @if ($errors->any())
-        <div style="color: red; margin-bottom: 15px;">
+        <div class='errors'>
             <ul style="margin: 0;">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -50,21 +49,20 @@
         </div>
     @endif
 
-    <!-- Форма ввода адреса и времени доставки -->
     <form action="{{ route('orders.store') }}" method="POST">
         @csrf
 
         <div style="margin-bottom: 15px;">
             <label>Адрес доставки (улица, дом, квартира):</label><br>
-            <input type="text" name="delivery_address" value="{{ old('delivery_address') }}" required placeholder="Например: ул. Ленина, д. 10, кв. 25" style="width: 100%; padding: 8px; margin-top: 5px;">
+            <input type="text" name="delivery_address" value="{{ old('delivery_address') }}" required placeholder="ул. Ленина, д. 10, кв. 25" class="address_input">
         </div>
 
         <div style="margin-bottom: 20px;">
             <label>Желаемые дата и время доставки:</label><br>
-            <input type="datetime-local" name="delivery_time" value="{{ old('delivery_time') }}" required style="width: 100%; padding: 8px; margin-top: 5px;">
+            <input type="datetime-local" name="delivery_time" value="{{ old('delivery_time') }}" required class="address_input">
         </div>
 
-        <button type="submit" style="width: 100%; padding: 10px; border: 1px solid #000; background: #eee; font-weight: bold; cursor: pointer;">
+        <button type="submit" class="confirm_btn">
             Подтвердить заказ
         </button>
     </form>

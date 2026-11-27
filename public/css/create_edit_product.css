@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+@font-face {
+    font-family: "Rubbik Bubbles";
+    src: url(../fonts/RubikBubbles-Regular.ttf)
+}
+@font-face {
+    font-family: "Bounded-Variable";
+    src: url(../fonts/Bounded-Variable.ttf)
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Bounded-Variable", sans-serif;
+}
+
+p, label{
+    color: #3C3C3C;
+}
+
+button {
+    text-decoration: none;
+    font-family: "Bounded-Variable", sans-serif;
+}
+
+main{
+    margin-bottom: 100px;
+}
+
+h1 {
+    font-family: "Rubbik Bubbles", sans-serif;
+    color: #FF9595;
+    font-size: 50px;
+    text-align: center;
+
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.form_item {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #FF9595;
+    border-radius: 20px;
+}
+
+.errors {
+    color: red;
+    margin-top: 10px;
+}
+
+form {
+    margin-top: 15px;
+}
+
+.category_form {
+    margin-top: 5px;
+    width: 100%;
+    padding: 5px;
+    color: #3C3C3C;
+    border-radius: 5px;
+}
+
+.name_form {
+    margin-top: 5px;
+    width: 98%;
+    padding: 5px;
+    border: 1px solid #3C3C3C;
+    border-radius: 5px;
+}
+
+.description_form {
+    margin-top: 5px;
+    width: 98%;
+    padding: 5px;
+    border: 1px solid #3C3C3C;
+    border-radius: 5px;
+}
+
+.price_form {
+    margin-top: 5px;
+    width: 98%;
+    padding: 5px;
+    border: 1px solid #3C3C3C;
+    border-radius: 5px;
+}
+
+.weight_form {
+    margin-top: 5px;
+    width: 98%;
+    padding: 5px;
+    border: 1px solid #3C3C3C;
+    border-radius: 5px;
+}
+
+.btn_save_edit {
+    padding: 8px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    background: #FF9595;
+    color: #FFFFFF;
+    border-radius: 7px;
+    font-family: "Bounded-Variable", "sans-serif";
+}

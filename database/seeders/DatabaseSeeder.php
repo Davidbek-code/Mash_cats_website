@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
             'patronymic' => 'Владимировна',
             'phone' => '+79001112233',
             'email' => 'elena@mail.com',
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('QWEasd123'),
             'role' => 'user',
         ]);
 

@@ -3,16 +3,16 @@
 @section('title', 'Изменение товара')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/catalog.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/create_edit_product.css') }}">
 @endpush
 
 @section('content')
-    <div style="max-width: 500px; margin: 20px auto; padding: 20px; border: 1px solid #ccc;">
-        <h2>Редактировать товар</h2>
+    <h1>ИЗМЕНИТЬ ТОВАР</h1>
+    <div class="form_item">
         <a href="{{ route('catalog.index') }}">← Назад в каталог</a>
 
         @if ($errors->any())
-            <div style="color: red; margin-top: 10px;">
+            <div class="errors">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -21,13 +21,13 @@
             </div>
         @endif
 
-        <form action="{{ route('catalog.update', $product) }}" method="POST" enctype="multipart/form-data" style="margin-top: 15px;">
+        <form action="{{ route('catalog.update', $product) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div style="margin-bottom: 10px;">
                 <label>Категория:</label><br>
-                <select name="category_id" required style="width: 100%; padding: 5px;">
+                <select name="category_id" required class="category_form">
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>
                             {{ $category->name }}
@@ -38,22 +38,22 @@
 
             <div style="margin-bottom: 10px;">
                 <label>Название товара:</label><br>
-                <input type="text" name="product_name" value="{{ old('product_name', $product->product_name) }}" required style="width: 100%; padding: 5px;">
+                <input type="text" name="product_name" value="{{ old('product_name', $product->product_name) }}" required class="name_form">
             </div>
 
             <div style="margin-bottom: 10px;">
                 <label>Описание:</label><br>
-                <textarea name="description" rows="3" style="width: 100%; padding: 5px;">{{ old('description', $product->description) }}</textarea>
+                <textarea name="description" rows="3" class="description_form">{{ old('description', $product->description) }}</textarea>
             </div>
 
             <div style="margin-bottom: 10px;">
-                <label>Цена (руб.):</label><br>
-                <input type="number" step="0.01" name="price" value="{{ old('price', $product->price) }}" required style="width: 100%; padding: 5px;">
+                <label>Цена:</label><br>
+                <input type="number" step="0.01" name="price" value="{{ old('price', $product->price) }}" required class="price_form">
             </div>
 
             <div style="margin-bottom: 10px;">
                 <label>Вес (в граммах):</label><br>
-                <input type="number" name="weight" value="{{ old('weight', $product->weight) }}" style="width: 100%; padding: 5px;">
+                <input type="number" name="weight" value="{{ old('weight', $product->weight) }}" class="weight_form">
             </div>
 
             <div style="margin-bottom: 10px;">
@@ -74,7 +74,7 @@
                 </label>
             </div>
 
-            <button type="submit" style="padding: 8px 15px; cursor: pointer;">Сохранить изменения</button>
+            <button type="submit" class="btn_save_edit">Сохранить изменения</button>
         </form>
     </div>
 

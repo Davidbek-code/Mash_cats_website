@@ -44,16 +44,16 @@
             </div>
         </div>
     </section>
-    <section style="max-width: 1000px; margin: 40px auto;">
+    <section class="new_products">
         <div class="container">
-            <h1 class="welcome_subtitle">НОВИНКИ</h1>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-            </div>
+            <h1 class="new_products_item_title">НОВИНКИ</h1>
+{{--            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">--}}
+{{--            </div>--}}
 
             @if($newProducts->isEmpty())
                 <p>Новинок пока нет.</p>
             @else
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                <div class="new_products_items">
                     @foreach($newProducts as $product)
                         @include('partials.product_card', ['product' => $product])
                     @endforeach

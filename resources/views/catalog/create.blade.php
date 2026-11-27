@@ -3,18 +3,16 @@
 @section('title', 'Создание товара')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/catalog.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/create_edit_product.css') }}">
 @endpush
 
 @section('content')
-
-<div style="max-width: 500px; margin: 20px auto; padding: 20px; border: 1px solid #ccc;">
-    <h2>Добавить новый товар</h2>
+<h1>ДОБАВИТЬ ТОВАР</h1>
+<div class="form_item">
     <a href="{{ route('catalog.index') }}">← Назад в каталог</a>
 
-    <!-- Вывод ошибок валидации, если что-то заполнили неверно -->
     @if ($errors->any())
-        <div style="color: red; margin-top: 10px;">
+        <div class="errors">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -23,12 +21,12 @@
         </div>
     @endif
 
-    <form action="{{ route('catalog.store') }}" method="POST" enctype="multipart/form-data" style="margin-top: 15px;">
+    <form action="{{ route('catalog.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div style="margin-bottom: 10px;">
             <label>Категория:</label><br>
-            <select name="category_id" required style="width: 100%; padding: 5px;">
+            <select name="category_id" required class="category_form">
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
@@ -37,22 +35,22 @@
 
         <div style="margin-bottom: 10px;">
             <label>Название товара:</label><br>
-            <input type="text" name="product_name" required style="width: 100%; padding: 5px;">
+            <input type="text" name="product_name" required class="name_form">
         </div>
 
         <div style="margin-bottom: 10px;">
             <label>Описание:</label><br>
-            <textarea name="description" rows="3" style="width: 100%; padding: 5px;"></textarea>
+            <textarea name="description" rows="3" class="description_form"></textarea>
         </div>
 
         <div style="margin-bottom: 10px;">
-            <label>Цена (руб.):</label><br>
-            <input type="number" step="0.01" name="price" required style="width: 100%; padding: 5px;">
+            <label>Цена:</label><br>
+            <input type="number" step="0.01" name="price" required class="price_form">
         </div>
 
         <div style="margin-bottom: 10px;">
-            <label>Вес (в граммах):</label><br>
-            <input type="number" name="weight" placeholder="Например: 500" style="width: 100%; padding: 5px;">
+            <label>Вес:</label><br>
+            <input type="number" name="weight" class="weight_form">
         </div>
 
         <div style="margin-bottom: 10px;">
@@ -66,7 +64,7 @@
             </label>
         </div>
 
-        <button type="submit" style="padding: 8px 15px; cursor: pointer;">Сохранить товар</button>
+        <button type="submit" class="btn_save_edit">Сохранить товар</button>
     </form>
 </div>
 

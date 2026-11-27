@@ -16,6 +16,10 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
+button {
+    font-family: "Bounded-Variable", "sans-serif";
+}
+
 a {
     color: black;
     text-decoration: none;
@@ -29,10 +33,7 @@ h2 {
     font-size: 36pt;
     line-height: 146%;
 }
-h3 {
-    font-family: "Rubbik Bubbles", sans-serif;
-    font-size: 18pt;
-}
+
 p {
     font-size: 16pt;
 }
@@ -60,6 +61,7 @@ p {
 }
 .welcome_subtitle {
     font-size: 42px;
+    color: #FF9595;
 }
 .welcome_marsh_title {
     font-size: 90px;
@@ -104,6 +106,7 @@ p {
 
 .services_title, .new_products_title {
     font-size: 80px;
+    color: #FF9595;
 }
 
 .service_items {
@@ -142,72 +145,25 @@ p {
 }
 
 .new_products {
-    padding-bottom: 150px;
-    padding-top: 90px;
+    padding-bottom: 70px;
+    padding-top: 15px;
+    max-width: 1000px; margin: 40px auto;
+    font-family: "Bounded-Variable", "sans-serif";
 }
+
 .new_products_items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-
-    color: #FF9595;
-    margin-top: 90px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
-.new_products_item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
-    max-width: 440px;
-    background-color: #FFFFFF;
-    outline: 3px solid #FF9595;
-
-    border-radius: 20px;
-    padding: 25px;
-
-}
-.order_box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-
-    margin-top: 30px;
-}
-.new_products h1 {
-    color: #FF9595;
-}
-.new_products .order_box h4 {
-    font-size: 32px;
-}
 .new_products_item_title {
-    margin-bottom: 20px;
-    margin-top: 20px;
-
-    font-size: 30px;
-    font-weight: 650;
-}
-.new_products_btn_buy {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 22px;
-    font-weight: 450;
-    color: #FFFFFF;
-
-    background-color: #FF9595;
-    border-radius: 10px;
-    transition: 0.4s;
-    width: 190px;
-    height: 48px;
-}
-.new_products_btn_buy:hover {
-    background-color: rgba(0, 0, 0, 0);
-    outline: 2px solid #FF9595;
+    margin-bottom: 50px;
+    /*margin-top: 30px;*/
     color: #FF9595;
-    box-shadow: 1px 1px 5px 5px rgba(255, 0, 0, 0.3);
+
+    font-size: 80px;
+    font-weight: 650;
 }
 
 @media (max-width: 768px) {
@@ -243,7 +199,6 @@ p {
         width: 32%;
         height: 40px;
         font-size: 18px;
-        border-radius: 15px;
         margin-top: 10px;
     }
     .services_title, .new_products_title {
@@ -301,22 +256,7 @@ p {
 
         font-size: 20px;
     }
-    .new_products .order_box h4 {
-        font-size: 13px;
-    }
-    .order_box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 22px;
 
-        margin-top: 8px;
-    }
-    .new_products_btn_buy {
-        font-size: 11px;
-        width: 95px;
-        height: 27px;
-    }
 }
 @media (max-width: 400px) {
     p {

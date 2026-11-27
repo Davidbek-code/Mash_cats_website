@@ -3,67 +3,62 @@
 @section('title', 'Корзина')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/catalog.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 @endpush
 
 @section('content')
 
-<div style="max-width: 800px; margin: 20px auto;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h1>Ваша корзина</h1>
-        <a href="{{ route('catalog.index') }}" style="text-decoration: none; color: #333;">← Вернуться в каталог</a>
+<div class="cart_container">
+    <div class="cart_items_container">
+        <h1>КОРЗИНА</h1>
+        <a href="{{ route('catalog.index') }}" class="back_to_catalog">← Вернуться в каталог</a>
     </div>
 
     @if(session('success'))
-        <div style="padding: 10px; border: 1px solid green; color: green; margin-bottom: 15px;">
+        <div class="success_message">
             {{ session('success') }}
         </div>
     @endif
 
     @if($cartItems->isEmpty())
-        <div style="padding: 20px; border: 1px solid #ccc; text-align: center;">
+        <div class="empty_message">
             <p>В корзине пока пусто.</p>
         </div>
     @else
-        <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div class="cart_items">
             @foreach($cartItems as $item)
-                <div style="border: 1px solid #ccc; padding: 15px; display: flex; justify-content: space-between; align-items: center;">
+                <div class="cart_item">
 
 
                     <div>
                         @if($item->product)
-                            <h3 style="margin: 0 0 5px 0;">{{ $item->product->product_name }}</h3>
-                            <p style="margin: 0; font-size: 14px; color: #555;">
+                            <h3>{{ $item->product->product_name }}</h3>
+                            <p class="cart_item_description">
                                 Цена: {{ $item->product->price }} руб. | Вес: {{ $item->product->weight ?? '-' }} г
                             </p>
                         @elseif($item->customCake)
-                            <h3 style="margin: 0 0 5px 0;">Торт на заказ</h3>
-                            <p style="margin: 0; font-size: 13px; color: #555;">
-                                Бисквит: {{ $item->customCake->biscuit_type }},
-                                Крем: {{ $item->customCake->cream_type }},
+                            <h3>Торт на заказ</h3>
+                            <p class="cart_custom_description">
+                                Бисквит: {{ $item->customCake->biscuit_type }},<br>
+                                Крем: {{ $item->customCake->cream_type }}, <br>
                                 Начинка: {{ $item->customCake->filling_type }}
                                 @if($item->customCake->decor_text)
-                                    | Надпись: «{{ $item->customCake->decor_text }}»
+                                    <br>Надпись: «{{ $item->customCake->decor_text }}»
                                 @endif
                             </p>
                         @endif
                     </div>
 
-                    <!-- Управление количеством и удаление -->
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <form action="{{ route('cart.update', $item) }}" method="POST" style="display: flex; align-items: center; gap: 5px; margin: 0;">
+                    <div class="cart_patch">
+                        <form action="{{ route('cart.update', $item) }}" method="POST" class="cart_patch_form">
                             @csrf
                             @method('PATCH')
-                            <button type="submit" name="action" value="decrease" style="padding: 2px 8px; cursor: pointer;">-</button>
+                            <button type="submit" name="action" value="decrease" class="patch_btn">-</button>
                             <span style="min-width: 20px; text-align: center;">{{ $item->quanity }}</span>
-                            <button type="submit" name="action" value="increase" style="padding: 2px 8px; cursor: pointer;">+</button>
+                            <button type="submit" name="action" value="increase" class="patch_btn">+</button>
                         </form>
 
-{{--                        <div style="font-weight: bold; min-width: 90px; text-align: right;">--}}
-{{--                            {{ $item->product ? $item->product->price * $item->quanity : 0 }} руб.--}}
-{{--                        </div>--}}
-
-                        <div style="font-weight: bold; min-width: 90px; text-align: right;">
+                        <div class="cart_item_price">
                             @if($item->product)
                                 {{ $item->product->price * $item->quanity }} руб.
                             @elseif($item->customCake)
@@ -71,10 +66,10 @@
                             @endif
                         </div>
 
-                        <form action="{{ route('cart.destroy', $item) }}" method="POST" style="margin: 0;">
+                        <form action="{{ route('cart.destroy', $item) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" style="padding: 4px 8px; border: 1px solid red; background: none; color: red; cursor: pointer;">
+                            <button type="submit" class="cart_item_delete_btn">
                                 Удалить
                             </button>
                         </form>
@@ -84,12 +79,11 @@
             @endforeach
         </div>
 
-        <!-- Итого и переход к оформлению -->
-        <div style="margin-top: 20px; padding: 15px; border: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
-            <h3 style="margin: 0;">Итого: {{ $totalPrice }} руб.</h3>
+        <div class="create_order_container">
+            <h3>Итого: {{ $totalPrice }} руб.</h3>
 
-            <a href="{{ route('orders.create') }}" style="padding: 10px 20px; border: 1px solid #000; background: #eee; text-decoration: none; color: #000; font-weight: bold;">
-                Оформить заказ →
+            <a href="{{ route('orders.create') }}" class="create_order_btn">
+                Оформить заказ
             </a>
         </div>
     @endif
