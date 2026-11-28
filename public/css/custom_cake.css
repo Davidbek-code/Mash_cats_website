@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+@font-face {
+    font-family: "Rubbik Bubbles";
+    src: url(../fonts/RubikBubbles-Regular.ttf)
+}
+@font-face {
+    font-family: "Bounded-Variable";
+    src: url(../fonts/Bounded-Variable.ttf)
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    min-height: 80vh;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+    font-family: "Rubbik Bubbles", sans-serif;
+    font-size: 50px;
+    color: #FF9595;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+p, label {
+    color: #3C3C3C;
+}
+
+.services_title {
+    font-family: "Rubbik Bubbles", sans-serif;
+    font-size: 70px;
+    text-align: center;
+    color: #FF9595;
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.custom_cake_container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px 20px 30px 20px;
+    border-radius: 15px;
+    border: 2px solid #FF9595;
+}
+
+.errors {
+    color: red;
+    margin-bottom: 15px;
+}
+
+.cake_compomnent {
+    margin-bottom: 15px;
+}
+
+.cake_compomnent select{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+.cake_compomnent input {
+    width: 97%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+.cake_total_price_container {
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.cake_total_price_text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3C3C3C;
+}
+
+#total-price {
+    font-size: 22px;
+    color: #3C3C3C;
+}
+
+.btn_to_cart {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #FF9595;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+}

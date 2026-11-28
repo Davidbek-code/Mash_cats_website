@@ -11,13 +11,6 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\FavoriteController;
 use App\Models\Product;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -65,9 +58,7 @@ Route::middleware(['auth', 'role:admin,manager'])->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::view('/', 'index')->name('home');
 Route::view('/about', 'about')->name('about');
-//Route::view('/catalog', 'catalog')->name('catalog');
 
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');

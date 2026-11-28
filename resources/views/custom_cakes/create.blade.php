@@ -1,23 +1,20 @@
 @extends('layouts.main')
 
-@section('title', 'Личный кабинет')
+@section('title', 'Конструктор тортов')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/services.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom_cake.css') }}">
 @endpush
 
 @section('content')
 
 <h1 class="services_title">КОНСТРУКТОР ТОРТОВ</h1>
 
-<div style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ccc;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-        <a href="{{ route('catalog.index') }}" style="text-decoration: none; color: #333;">← В каталог</a>
-    </div>
+<div class="custom_cake_container">
 
 @if ($errors->any())
-    <div style="color: red; margin-bottom: 15px;">
-        <ul style="margin: 0;">
+    <div class="errors">
+        <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
@@ -28,9 +25,9 @@
 <form action="{{ route('custom_cakes.store') }}" method="POST" id="cake-form">
     @csrf
 
-    <div style="margin-bottom: 15px;">
-        <label><strong>1. Выберите бисквит:</strong></label><br>
-        <select name="biscuit_type" id="biscuit" style="width: 100%; padding: 8px; margin-top: 5px;">
+    <div class='cake_compomnent'>
+        <label><strong>1. Выберите бисквит</strong></label><br>
+        <select name="biscuit_type" id="biscuit">
             @foreach($biscuits as $name => $price)
                 <option value="{{ $name }}" data-price="{{ $price }}">
                     {{ $name }} (+{{ $price }} руб.)
@@ -39,9 +36,9 @@
         </select>
     </div>
 
-    <div style="margin-bottom: 15px;">
-        <label><strong>2. Выберите крем:</strong></label><br>
-        <select name="cream_type" id="cream" style="width: 100%; padding: 8px; margin-top: 5px;">
+    <div class='cake_compomnent'>
+        <label><strong>2. Выберите крем</strong></label><br>
+        <select name="cream_type" id="cream">
             @foreach($creams as $name => $price)
                 <option value="{{ $name }}" data-price="{{ $price }}">
                     {{ $name }} (+{{ $price }} руб.)
@@ -50,9 +47,9 @@
         </select>
     </div>
 
-    <div style="margin-bottom: 15px;">
-        <label><strong>3. Выберите начинку:</strong></label><br>
-        <select name="filling_type" id="filling" style="width: 100%; padding: 8px; margin-top: 5px;">
+    <div class='cake_compomnent'>
+        <label><strong>3. Выберите начинку</strong></label><br>
+        <select name="filling_type" id="filling">
             @foreach($fillings as $name => $price)
                 <option value="{{ $name }}" data-price="{{ $price }}">
                     {{ $name }} (+{{ $price }} руб.)
@@ -61,18 +58,17 @@
         </select>
     </div>
 
-    <div style="margin-bottom: 20px;">
-        <label><strong>4. Надпись на торте (необязательно, до 25 символов, +{{ $decorPrice }} руб.):</strong></label><br>
-        <input type="text" name="decor_text" id="decor" maxlength="25" placeholder="Например: С Днём Рождения!" style="width: 100%; padding: 8px; margin-top: 5px;">
+    <div class='cake_compomnent'>
+        <label><strong>4. Надпись на торте (необязательно, до 25 символов)</strong></label><br>
+        <input type="text" name="decor_text" id="decor" maxlength="25" placeholder="Например: С Днём Рождения!">
     </div>
 
-    <!-- Блок расчёта цены -->
-    <div style="padding: 15px; border: 1px solid #333; background: #f9f9f9; margin-bottom: 15px; text-align: center;">
-        <span style="font-size: 16px;">Итоговая стоимость торта: </span>
-        <strong id="total-price" style="font-size: 20px;">0</strong> <strong>руб.</strong>
+    <div class="cake_total_price_container">
+        <span class="cake_total_price_text">Итоговая стоимость торта: </span>
+        <strong id="total-price">0</strong> <strong class="cake_total_price_text">руб</strong>
     </div>
 
-    <button type="submit" style="width: 100%; padding: 10px; border: 1px solid #000; background: #eee; font-weight: bold; cursor: pointer;">
+    <button type="submit" class="btn_to_cart">
         Добавить торт в корзину
     </button>
 </form>
